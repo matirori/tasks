@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
-    id 'war'
+    //id 'war'
 }
 
 group = 'com.crud.tasks'
@@ -26,14 +26,15 @@ dependencies {
     implementation 'org.springframework.data:spring-data-rest-hal-browser'
     implementation 'org.springframework.session:spring-session-core'
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile 'mysql:mysql-connector-java'
+    //compile 'mysql:mysql-connector-java'
+    compile('org.postgresql:postgresql')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
 }
 
