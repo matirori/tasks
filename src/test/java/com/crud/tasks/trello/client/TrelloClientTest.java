@@ -1,7 +1,7 @@
-/*
 package com.crud.tasks.trello.client;
 
 
+import com.crud.tasks.domain.Badges;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.web.client.RestTemplate;
 
 
+import javax.transaction.Transactional;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-
+@Transactional
 @RunWith(MockitoJUnitRunner.class)
 public class TrelloClientTest {
 
@@ -79,7 +79,8 @@ public class TrelloClientTest {
         CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
                 "1",
                 "Test task",
-                "http://test.com"
+                "http://test.com",
+                new Badges()
         );
 
         when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
@@ -105,4 +106,4 @@ public class TrelloClientTest {
         //Then
         assertEquals(0, fetchedTrelloBoards.size());
     }
-}*/
+}
